@@ -1,0 +1,364 @@
+% This is "sig-alternate.tex" V2.0 May 2012
+% This file should be compiled with V2.5 of "sig-alternate.cls" May 2012
+%
+% This example file demonstrates the use of the 'sig-alternate.cls'
+% V2.5 LaTeX2e document class file. It is for those submitting
+% articles to ACM Conference Proceedings WHO DO NOT WISH TO
+% STRICTLY ADHERE TO THE SIGS (PUBS-BOARD-ENDORSED) STYLE.
+% The 'sig-alternate.cls' file will produce a similar-looking,
+% albeit, 'tighter' paper resulting in, invariably, fewer pages.
+%
+% ----------------------------------------------------------------------------------------------------------------
+% This .tex file (and associated .cls V2.5) produces:
+%       1) The Permission Statement
+%       2) The Conference (location) Info information
+%       3) The Copyright Line with ACM data
+%       4) NO page numbers
+%
+% as against the acm_proc_article-sp.cls file which
+% DOES NOT produce 1) thru' 3) above.
+%
+% Using 'sig-alternate.cls' you have control, however, from within
+% the source .tex file, over both the CopyrightYear
+% (defaulted to 200X) and the ACM Copyright Data
+% (defaulted to X-XXXXX-XX-X/XX/XX).
+% e.g.
+% \CopyrightYear{2007} will cause 2007 to appear in the copyright line.
+% \crdata{0-12345-67-8/90/12} will cause 0-12345-67-8/90/12 to appear in the copyright line.
+%
+% ---------------------------------------------------------------------------------------------------------------
+% This .tex source is an example which *does* use
+% the .bib file (from which the .bbl file % is produced).
+% REMEMBER HOWEVER: After having produced the .bbl file,
+% and prior to final submission, you *NEED* to 'insert'
+% your .bbl file into your source .tex file so as to provide
+% ONE 'self-contained' source file.
+%
+% ================= IF YOU HAVE QUESTIONS =======================
+% Questions regarding the SIGS styles, SIGS policies and
+% procedures, Conferences etc. should be sent to
+% Adrienne Griscti (griscti@acm.org)
+%
+% Technical questions _only_ to
+% Gerald Murray (murray@hq.acm.org)
+% ===============================================================
+%
+% For tracking purposes - this is V2.0 - May 2012
+
+%\documentclass[10pt, conference, compsocconf]{IEEEtran}
+%\documentclass[10pt,conference]{IEEEtran} 
+%\documentclass{sig-alternate}
+\documentclass[sigconf,review, anonymous]{acmart}
+\acmConference[ICSE 2018]{40th International Conference on Software Engineering}{May 27--June 3, 2018}{Gothenburg, Sweden}
+\acmYear{2018}
+
+\usepackage{url}
+\usepackage{balance}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{xspace}
+\usepackage{color}
+\usepackage{pifont}
+\usepackage{xcolor,colortbl}
+
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{lipsum}
+\mdfdefinestyle{ExampleFrame}{
+	linecolor=black,
+	linewidth=1pt,
+	frametitlerule=true,
+	frametitlebackgroundcolor=gray!20,
+	innertopmargin=\topskip,
+	roundcorner=5pt
+}
+
+
+%\newenvironment{widequotation}{\list{}{\listparindent 1.5em \itemindent\listparindent
+%		\rightmargin 0pt \parsep 0pt plus 1pt}\item\relax}
+%{\endlist}
+%\def\signed#1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip2em
+%		\hbox{}\nobreak\hfil\raise-1pt\hbox{#1}%
+%		\parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+%\newsavebox\mybox
+%\newenvironment{aquote}[1]
+%	{\savebox\mybox{(#1)}\begin{widequotation}\itshape``\ignorespaces}
+%	{\unskip"\signed{\usebox\mybox}\end{widequotation}}
+
+
+\sloppy
+\newcommand {\pl}[1]{[{\bf \textcolor{green} \underline{Patricia}}: {\bf #1}]}
+\newcommand {\pat}[1]{[{\bf \underline{Patrizio}}: {\bf #1}]}
+\newcommand {\rog}[1]{[{\bf \underline{Rogardt}}: {\bf #1}]}
+\newcommand{\todo}[1]{\textcolor{blue}{\ding{46}~{\sf todo}~#1}}
+
+%\newcommand{\definition}[2]{\noindent \textbf{\emph{Definition #1}} (#2)}
+\newcommand{\ttransition}[2]{\stackrel{#1}{\longrightarrow^{#2}}}
+\newcommand{\ntransition}[1]{\longrightarrow^{#1}}
+\newcommand{\transition}[1]{\stackrel{#1}{\rightarrow}}
+\newcommand{\Transition}[1]{\stackrel{#1}{\Rightarrow}}
+\newcommand{\freccia}[1]{\mathop{\stackrel{#1} {\longrightarrow}} }
+\newcommand{\ug}[1]{\mathop{=}\limits^{#1}_{}}
+\newcommand{\barra}[1]{\overline{#1}}
+\newcommand{\eqdef}{\stackrel{def}{=}}
+
+
+\newcommand{\footlabel}[2]{%
+    \addtocounter{footnote}{1}%
+    \footnotetext[\thefootnote]{%
+        \addtocounter{footnote}{-1}%
+        \refstepcounter{footnote}\label{#1}%
+        {\footnotesize #2}%
+    }%
+    $^{\ref{#1}}$%
+}
+
+\newcommand{\footref}[1]{%
+    $^{\ref{#1}}$%
+}
+
+\usepackage{listings}
+
+% colors
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{light-gray}{gray}{0.85}
+
+% listing settings
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=C,                      % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+  caption=A program                % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\input{macros}
+
+\begin{document}
+
+
+% \title{CI\&D in the Automotive Ecosystem: Challenges and Impediments}
+
+%\title{Continuous Delivery in the Automotive Ecosystem: \\Transparency Trade-offs in  Software Value-Chains}
+%\title{Transparency Trade-offs: Continuous Delivery in the Automotive Software Value-Chain}
+
+\title{Keeping Smartness under Control}
+
+
+
+\author{\IEEEauthorblockN{Piergiuseppe Mallozzi\IEEEauthorrefmark{1}, Patrizio Pelliccione\IEEEauthorrefmark{1}}
+\IEEEauthorblockA{\IEEEauthorrefmark{1}Chalmers University of Technology $|$ University of Gothenburg, Sweden\\
+mallozzi@chalmers.se, patrizio.pelliccione@gu.se
+}%\\
+%Department of Computer Science and Engineering,
+%Gothenburg, Sweden}
+%\and
+%\IEEEauthorblockA{\IEEEauthorrefmark{1}Computer Science Institute, Vrije Universiteit Amsterdam, The Netherlands}
+%\IEEEauthorblockA{\IEEEauthorrefmark{3}{Bergen University College, Bergen, Norway}}
+%\IEEEauthorblockA{\IEEEauthorrefmark{4}{Volvo Cars, %Gothenburg, Sweden}\\
+%robvdvalk@gmail.com, patrizio.pelliccione@gu.se, p.lago@vu.nl, heldal@chalmers.se, \\eric.knauss@gu.se, and jacob.juul@volvocars.com}
+%\IEEEauthorblockA{
+%Email: name@xyz.com}
+}
+
+% conference papers do not typically use \thanks and this command
+% is locked out in conference mode. If really needed, such as for
+% the acknowledgment of grants, issue a \IEEEoverridecommandlockouts
+% after \documentclass
+
+% for over three affiliations, or if they all won't fit within the width
+% of the page, use this alternative format:
+% 
+%\author{\IEEEauthorblockN{Michael Shell\IEEEauthorrefmark{1},
+%Homer Simpson\IEEEauthorrefmark{2},
+%James Kirk\IEEEauthorrefmark{3}, 
+%Montgomery Scott\IEEEauthorrefmark{3} and
+%Eldon Tyrell\IEEEauthorrefmark{4}}
+%\IEEEauthorblockA{\IEEEauthorrefmark{1}School of Electrical and Computer Engineering\\
+%Georgia Institute of Technology,
+%Atlanta, Georgia 30332--0250\\ Email: see http://www.michaelshell.org/contact.html}
+%\IEEEauthorblockA{\IEEEauthorrefmark{2}Twentieth Century Fox, Springfield, USA\\
+%Email: homer@thesimpsons.com}
+%\IEEEauthorblockA{\IEEEauthorrefmark{3}Starfleet Academy, San Francisco, California 96678-2391\\
+%Telephone: (800) 555--1212, Fax: (888) 555--1212}
+%\IEEEauthorblockA{\IEEEauthorrefmark{4}Tyrell Inc., 123 Replicant Street, Los Angeles, California 90210--4321}}
+
+
+
+
+
+
+\begin{abstract}
+...
+\end{abstract}
+
+
+
+%\begin{IEEEkeywords}
+%\ugh{Automotive ecosystem}\eric{revise keywords?}, relationships OEM suppliers, transparency, win-win, new business model, contracts.
+%continuous integration and delivery; transparency; contracts; information sharing; automotive; interview survey
+%\end{IEEEkeywords}
+
+%\IEEEpeerreviewmaketitle
+
+\keywords{Reinforcement learning, Machine learning, Runtime verification}
+
+\maketitle
+
+%\input{Introduction.tex}
+%\input{Context.tex}
+%\input{Related_Work.tex}
+%\input{Method.tex}
+%\input{Results.tex}
+%\input{Conclusion.tex}
+
+\section{Introduction}
+
+
+
+Modern software systems need to increasingly operate 
+in dynamic, uncontrollable, and partially known environments. These systems have to deal with various dimensions of uncertainty that cannot be completely predicted at design-time.
+Sources of uncertainty could be the environment around the system, the availability of the resources that the system can access at a given time or the difficulty of predicting the other systems behaviour~\cite{Esfahani2013,Autili2011,Garlan2010}. %Uncertainty can also require the system to dynamically evolve its goals and adapt itself while it is running.
+
+Modern software systems are increasingly smart and autonomous. On one side they need to become self-adaptable systems, i.e. systems that are able to adapt their behavior at run-time without human  intervention~\cite{survey,roadmap1,roadmap2} in response to changes in the environment or in their internal state. Self-adaptive systems implement some sort of feedback loop that drives their adaptations~\cite{brun2009engineering}. This basic mechanism for adaptation has been applied for years in control engineering; it consists of four main activities: collect, analyze, decide, and act. A well-known reference model for describing the adaptation processes is the MAPE-K loop (consisting of the parts Model, Analyze, Plan, Execute, and the Knowledge Base)~\cite{Kephart:2003hx}. Furthermore, often systems collect  data from the environment, learn from them, and, consequently, continuously improve. %An example of such a system is the Never-Ending Language Learning~\cite{carlson2010toward}.
+
+On the other side, smart and autonomous systems will need to support continuous evolution of software, even when they are operating in the field, e.g., in automotive, when
+vehicles are already on the road, through Continuous integration and Continuous Deployment (CI\&D) practices. 
+CI\&D practices promise to shorten integration, delivery,
+and feedback cycles~\cite{Stahl2014}.
+These techniques have been applied by pure software companies, such as Facebook, and now many other domains, like automotive~\cite{Knauss2016} and robotics\footnote{e.g., \url{http://wiki.ros.org/CIs} and \url{http://rosin-project.eu/}}, have a strong motivation
+to embrace continuous integration and delivery practices to yield improvements in flexibility
+and cycle time despite the challenges.
+Continuous evolution of a system should additionally exploit %not only data coming from %Unlike 
+%human drivers that keep making the same mistakes all the time, an autonomous vehicle can learn 
+%from 
+the knowledge collected by other systems. In this sense, assuming that mistakes are inevitable also for autonomous systems, not every system has to make the same mistake to learn from it. For instance in the automotive domain, once the software has been fixed, all other vehicles will be updated based on this knowledge and no other vehicle will do the same mistake again. As Tesla says: ``\emph{as more real-world miles accumulate and the software logic accounts for increasingly rare events, the probability of injury will keep decreasing}"\footnote{\url{https://www.tesla.com/blog/tragic-loss}}.
+
+
+
+
+
+
+
+Self-adaptation and online learning are promising concepts but are still far from practical application in safety-critical domains. Collecting data at runtime, self-adapt, and continuously evolve are a fascinating concepts. When dealing with safety-critical systems, the adaptation of systems must be certified as \emph{safe} before it can be applied. %A more realistic scenario is that automotive companies collect data from their customers and based on the new knowledge, they adapt their method and software which will be pushed back to the vehicles once it has been tested and proved safe.
+However, with the intensive use of machine learning techniques it is hard to test the software and be sure that it will act always as intended. 
+
+In this paper we propose an approach that combines machine learning approaches with \emph{runtime monitoring} that guarantees the preservation of important safety-critical requirements. 
+%Methods such as \emph{runtime monitoring} can help preventing the system from violating important safety-critical requirements. 
+%We will focus on the integration of different state-of-the-art methods with the vision to build an autonomous system that can make safety-certifiable decisions.
+On one side, systems will be able to adapt and evolve themselves at runtime through the use of machine learning techniques. On the other side, runtime monitoring will continuously check that the actions suggested by reinforcement learning will not violate 
+the identified safety-critical requirements, which are specified in terms of invariant properties.
+
+%Verifying that an autonomous system is always safe is a challenge that can not be addressed with traditional approaches. Such systems are opened to their boundaries and they continuously change while adapting to the environment, but they still have to meet their safety requirements despite their adaptations.
+
+%Now our goal is to model a system that continuously evolves using machine learning techniques to drive the system's adaptations. At the same time, we want to keep the preservation of the system's invariants by continuously monitoring how the system reacts to the changes in the environment. This is performed by a continuous run-time monitoring of the machine-learning generated actions. 
+Moreover, the outcome of the runtime monitoring is also exploited to \emph{train} the machine learning algorithms used to make decisions; in this way, they can continuously learn and suggest better actions in the future.
+
+The paper is structured as follows: Section~\ref{sec:reinforcementLearning} introduces the machine learning techniques we use in our approach and Section~\ref{sec:challenges} explains the challenges in using these techniques.  Section~\ref{sec:approach} presents the approach we propose in this paper.
+Section~\ref{sec:conclusions} concludes with final remarks and research directions for the future. 
+
+\section{Reinforcement Learning}\label{sec:reinforcementLearning}
+
+\todo{explain reinforcement learning}
+
+\section{The Use of Machine Learning for autonomous systems}\label{sec:challenges}
+
+% \nasser{A good paper is Hidden Technical Debt in Machine Learning Systems. D. Sculley, Gary Holt, Daniel Golovin, Eugene Davydov, Todd Phillips. in short: - Using ML erodes boundaries and diminishes encapsulation and modular design, leading to CACE principle: Changing Anything Changes Everything. This causes great difficulty to maintain the code and make isolated changes and improvements. - Unstable data dependencies are caused when input data is changing behavior over time. This can be implicit, for example, the output from an ML system that is being updated over time is used as input to another ML system. For example, consider the case in which an input signal was previously mis-calibrated. The model consuming it likely fit to these mis-calibrations, and a silent update that corrects the signal will have sudden ramifications for the model. A suggestion is to freeze the earlier models before using their output in a new ML system. - Avoid underutilized data dependencies. Examples include correlated features or features that provide little improvement. - Avoid feedback loops where, e.g., an ML system can influence its own behavior by being updated over time. - The amount of needed supporting code to use generic ML packages results in glue code system. In such conditions, trying other methods or making improvements becomes very expensive. Because a mature system might end up being (at most) 5 - The absence of good abstraction to support ML systems (similar to what exists for database technology) makes it easy to blur the lines between components. Map-Reduce is mentioned as an example of poor abstraction.  - Some hints are given on how to reduce the risks related to the configuration of ML systems. - Extra caution needed to deal with changes in external world: a simple example is when a fixed threshold value is used on the output of an ML system which is being updated over time to decide to perform an action (it’s suggested to dynamically set the threshold values in this example when applicable). Online tests and monitoring is argued to be very critical for this purpose. The main problem with ML methods is that they are optimized for average cost function and do not guarantee for corner cases. How one can verify deep learning and guarantee what is going to happen? so there is a loop: look at the verification results an improve the methods. But all is done offline, not much emphasize on online learning or self-adaptation. Big data has an important role in making this happen.}\pier{added most of it, please check the list 
+
+
+%Different types of  are being used in various parts of autonomous vehicles, for example, to classify the detection of objects from sensors data. Such components 
+
+Machine Learning (ML) techniques require a set of training data which has to be independent of the validation data to avoid overfitting. One main problem with ML methods is that they are optimized for average cost function and they do not guarantee for corner cases. Challenges in this area are comprised of the fact that when using methods such as neural networks, it is difficult for humans to understand the rules that have been learned by simply looking at its weights. This is one of the hot research areas at the moment and researchers are investigating different ways to visualize and understand the logic behind the learned neural networks in solving various tasks. Brute force testing is a widely used technique to validate the network resulting in an expensive and not always best validation method. Furthermore, because the neural network learns the rules from a training set, if certain data is missing or wrongly correlated in the training data, this can cause the network to fail to cause safety hazards. In other words, if there is a special case that the system has not experienced, it cannot correctly predict such case; this is known as the black sworn problem~\cite{Nassim:2007vq}. Hence, it is hard to detect and isolate bugs where the behavior is not expressed with traditional lines of codes but entrusted to a neural network. The network would need to be retrained with the risk to \emph{unlearn} correct behaviors. This also motivates the safe AD architectures, where the safety of the complete system can be guaranteed.
+
+%\todo{add the problem of ``avoiding side effects" and ``avoiding reward hacking" \url{\https://arxiv.org/abs/1606.06565}}
+
+\todo{describe some of the major challenges for guaranteeing safety in autonomous vehicles as pointed out also by Koopman~\cite{Koopman:2016hh} and Schmittner~\cite{Schmittner:2014dn}.}
+
+\todo{Add examples, like: \url{https://www.computerworld.com/article/3087328/emerging-technology/google-concerned-about-curious-but-destructive-cleaning-robots-that-hack-reward-systems.html}
+\url{http://www.wired.co.uk/article/google-ai-five-problems-robots},
+\url{https://blog.openai.com/concrete-ai-safety-problems/}}
+
+%Integrating machine learning components with traditional software is a challenge that risks to lead into technical debt~\cite{Sculley:2015us}. Technical debt indicates the long-term cost that arises when implementing a quick solution that works in the short run. Besides of having all the maintainability problems of traditional software, machine learning components have special issues. Design principles, such as separation of concerns and strict abstraction boundaries, might fail to be applied in machine learning software as it uses signals from a variety of components and it has dependencies on external data. Some of the problems that the use of machine learning can cause are:
+
+%\begin{itemize}
+%    \item The use of machine learning erodes boundaries and diminishes encapsulation and modular design, leading to \emph{CACE principle}: Changing Anything Changes Everything. This causes great difficulty to maintain the code, isolate changes, and make %isolated changes and 
+%    improvements. 
+%    \item Unstable data dependencies are caused when input data is changing behavior over time. This can be \emph{implicit}, i.e., a machine learning system that is being updated over time; the output of such a system is used as input to another machine learning system. For example, let us consider the case in which an input signal was previously miscalibrated. The model consuming it likely fits to these miscalibrations and a silent update that corrects the signal will have sudden ramifications for the model. In order to avoid problematic situations a %A 
+%    suggestion is to freeze the earlier models before using their output in a new ML system.%~\pier{TODO: rephrase maybe}
+%    \item The amount of needed supporting code to use generic ML packages results in glue code system. In such conditions, trying other methods or making improvements become very expensive.
+%    \item The absence of good abstraction to support ML systems (similar to what exists for database technology) makes it easy to blur the lines between components.
+%    \item Extra caution needed to deal with changes in the external world: a simple example is when a fixed threshold value is used on the output of an ML system which is being updated over time to decide to perform an action (it’s suggested to dynamically set the threshold values in this example when applicable). Online tests and monitoring are argued to be very critical for this purpose. 
+%\end{itemize}
+    
+    
+
+%\pier{TODO: finish the sentence} %Verification of deep learning alg How one can verify deep learning and guarantee what is going to happen? so there is a loop: look at the verification results an improve the methods. But all is done offline, not much emphasize on online learning or self-adaptation. Big data has an important role in making this happen.~\pier{not clear}
+
+
+			
+\section{Validation process for autonomous systems is not clear}\label{sec:approach} 
+
+A common way to assess safety in autonomous vehicles is through extensive testing, by test-driving the vehicles, and evaluating the vehicles performance. The more the vehicles drive in autonomous mode, the more experience they gather, and this will result in % resulting in a 
+continuously improving system.
+Companies like Waymo\footnote{\url{https://waymo.com}} advertises that their fleet of autonomous vehicles has driven 2.5 million miles accumulating the equivalent of 400 years human driving experience. Although such numbers seam impressive, in order to demonstrate their reliability, autonomous vehicle might need to drive for hundreds of millions or in some cases billions of miles~\cite{Kalra:2016em}. New methods to establish the safety of autonomous vehicles are needed. Big data analysis becomes very important in this regard, statistical signal processing and ML methods have to be developed to analyze the large amounts of data that is collected from the test vehicles or customer vehicles. Examples of such analysis includes: (i) the detection of the use cases for which the sensors or the complete system provide poor performance, (ii) anomaly detection in the sensor data~\cite{Tashvir2017}, and (iii) the creation of realistic simulation frameworks through the use of sensor models where the logged sensor data are used to improve the quality of the %reality of the 
+simulations performed in a cluster of computers. To be able to do so, sensor comparison frameworks~\cite{Florbaeck2016} are required to be able to compare the data obtained from two different sensors, where one of the sensors could have,  for example, significantly higher accuracy and can be used as a reference sensor.
+
+Furthermore, the use of probabilistic models (as in the object detection) and stochastic algorithms (as in planning) poses new challenges in the validation process.  Having %With 
+probabilistic system passing the test once does not guarantee that the same test will succeed every time. Testing becomes difficult for two reasons. The first reason is that due to the non-repeatability of such algorithms it can be difficult to exercise a particular corner case. The second reason is that it is difficult to evaluate whether a result is correct or not in the case of there are multiple correct behaviors for each test case.
+
+\section{Controlling reinforcement learning decisions at runtime}
+
+We present here a method that tries to combine the flexibility and adaptability of machine learning algorithms with the more formal and traditional invariants preservation methods.
+
+In safety critical application it is mandatory the \emph{''freedom from unacceptable risk of physical injury or of damage to the health of people, either directly, or indirectly as a result of damage to property or to the environment''}.
+
+We propose a method for delegating part of the decision-making process of an Autonomous System to fully machine-learned algorithms while still preserving system's invariants.
+
+Autonomous Systems require measurements and interaction with the environment.  They perceive external information through sensors and effect the environment executing actions through actuators (in pure software system these are only inputs and outputs).  The perception of the environment is a semantic representation of the raw data and it can be achieved with techniques such as sensor fusion, where information coming from multiple sensors are combined. The perception component performs an important process that enables the autonomous system to build a model of the external world and it is the source of observations for the decision-making component.
+
+The execution component applies the actions to the external environment and it also communicates with the internal world model. The data transferred to the world model is used to keep track of the actions generated. This information can be used for simulation purposes but also to understand the effect that actions have produced to the environment and refining invariants generation process.
+
+\todo{Add simple figure describing the approach at high level}
+
+\todo{Introduce and detail each part of the approach, identifying the challenges and how this can be realized}
+
+\todo{discuss how the approach manages adaptation and evolution}
+
+\subsection{Identifying invariants from high-level requirements}
+
+\subsection{Reinforcement learning for decision of autonomous systems}
+
+\subsection{Monitoring as controller of reinforcement learning components}
+
+\subsection{Collecting feedback for enabling learning}
+
+
+\section{Conclusions}\label{sec:conclusions}
+
+\balance
+
+\bibliographystyle{IEEEtran}
+\bibliography{library}
+
+\end{document}

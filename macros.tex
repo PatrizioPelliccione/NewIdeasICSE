@@ -1,0 +1,107 @@
+\newcommand{\numberInterviewees}{8\xspace}
+\newcommand{\numberCompanies}{six\xspace}
+\newcommand{\numberValidationsInterviewees}{3\xspace}
+\newcommand{\avLength}{60 minutes\xspace}
+\newcommand{\numberQuestionnaire}{30\xspace}
+\newcommand{\numberValidResponses}{23\xspace} %-3
+
+\usepackage{soul}
+\renewcommand{\emph}[1]{\ul{#1}}
+
+\newcounter{guideline}
+\newenvironment{guideline}{\refstepcounter{guideline}
+	\vspace{1pt}
+	\begin{compactitem}
+		\item[(G\theguideline)] \it }
+	{ \end{compactitem}\smallskip}
+
+\newcounter{challenge}
+\newcommand{\challenge}{\refstepcounter{challenge}}
+
+
+\newcounter{finding}
+\newenvironment{finding}{\refstepcounter{finding}
+	\vspace{1pt}
+	\begin{compactitem}
+		\item[F\thefinding:] \it }
+	{ \end{compactitem}\smallskip}
+
+%\newboolean{showcomments}
+%\setboolean{showcomments}{true} % toggle to show or hide comments
+%\ifthenelse{\boolean{showcomments}}
+{\newcommand{\nb}[2]{
+		\fcolorbox{black}{yellow}{\bfseries\sffamily\scriptsize#1}
+		{\sf\small$\blacktriangleright$\textit{#2}$\blacktriangleleft$}
+	}
+	\newcommand{\version}{\emph{\scriptsize$-$working$-$}}
+}
+{\newcommand{\nb}[2]{}
+	\newcommand{\version}{}
+}
+
+\newcommand{\ra}{$\rightarrow$}
+\newcommand{\ugh}[1]{\textcolor{red}{\uwave{#1}}} % please rephrase
+\newcommand{\ins}[1]{\textcolor{blue}{\uline{#1}}} % please insert
+\newcommand{\del}[1]{\textcolor{red}{\sout{#1}}} % please delete
+\newcommand{\chg}[2]{\textcolor{red}{\sout{#1}}{\ra}\textcolor{blue}{\uline{#2}}}
+
+% Removes the right margin present in the original quotation environment
+\newenvironment{widequotation}{\list{}{\listparindent 0em \itemindent\listparindent
+	\leftmargin 10pt	\rightmargin 0pt \parsep 0pt plus 1pt}\item\relax}
+{\endlist}
+\def\signed#1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip2em
+		\hbox{}\nobreak\hfil\raise-1pt\hbox{#1}%
+		\parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+	{\savebox\mybox{(#1)}\begin{widequotation}\itshape``\ignorespaces}
+	{\unskip''\signed{\usebox\mybox}\end{widequotation}}
+
+\newcommand\rebekka[1]{\nb{Rebekka}{#1}}
+\newcommand\patrizio[1]{\nb{Patrizio}{#1}}
+\newcommand\eric[1]{\nb{Eric}{#1}}
+
+\newcommand{\jn}{a product owner\xspace}
+\newcommand{\Jn}{A product owner\xspace}
+\newcommand{\yvo}{a requirements manager\xspace}
+\newcommand{\Yvo}{A requirements manager\xspace}
+\newcommand{\tob}{a chief architect\xspace}
+\newcommand{\Tob}{A chief architect\xspace}
+\newcommand{\ande}{a logical architect\xspace}
+\newcommand{\Ande}{A logical architect\xspace}
+\newcommand{\fre}{a process manager\xspace}
+\newcommand{\Fre}{A process manager\xspace}
+\newcommand{\ale}{a team leader for functional development\xspace}
+\newcommand{\Ale}{A team leader for functional development\xspace}
+\newcommand{\rob}{a Scrum master\xspace}
+\newcommand{\Rob}{A Scrum master\xspace}
+\newcommand{\mar}{a product owner\xspace}
+\newcommand{\Mar}{A product owner\xspace}
+\newcommand{\jan}{the chief technical officer\xspace}
+\newcommand{\Jan}{The chief technical officer\xspace}
+\newcommand{\andVCC}{a system architect from Company C\xspace}
+\newcommand{\AndVCC}{A system architect from Company C\xspace}
+\newcommand{\intSca}{a software architect from Company B\xspace}
+
+\newcommand{\andN}{1\xspace}
+\newcommand{\tobN}{2\xspace}
+\newcommand{\jnN}{3\xspace}
+\newcommand{\yvoN}{4\xspace}
+\newcommand{\freN}{5\xspace}
+\newcommand{\aleN}{6\xspace}
+\newcommand{\marN}{7\xspace}
+\newcommand{\robN}{8\xspace}
+\newcommand{\scaniaN}{9\xspace}
+\newcommand{\janN}{10\xspace}
+\newcommand{\vccN}{11\xspace}
+
+
+\newcommand{\jnR}{Product owner\xspace}
+\newcommand{\yvoR}{Requirements manager\xspace}
+\newcommand{\tobR}{Chief architect\xspace}
+\newcommand{\andeR}{Logical architect\xspace}
+\newcommand{\freR}{Process manager\xspace}
+\newcommand{\aleR}{Team leader\xspace}
+\newcommand{\robR}{Scrum master\xspace}
+\newcommand{\marR}{Product owner\xspace}
+
